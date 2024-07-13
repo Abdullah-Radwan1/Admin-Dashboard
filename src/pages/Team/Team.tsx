@@ -1,4 +1,4 @@
-import React from "react";
+
 import { rows } from "./teamdata";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Typography, useTheme } from "@mui/material";
@@ -7,6 +7,9 @@ import {
  LockOpenOutlined,
  SecurityOutlined,
 } from "@mui/icons-material";
+import Textheader from "../../components/Textheader";
+
+
 
 const Team = () => {
  const columns = [
@@ -43,7 +46,10 @@ const Team = () => {
    flex: 1,
    align: "center",
    headerAlign: "center",
-   renderCell: ({ row: { access } }) => {
+   renderCell: ({ row: {
+    
+      //@ts-ignore
+    access } }) => {
     return (
      <Box
       sx={{
@@ -73,7 +79,11 @@ const Team = () => {
  const theme = useTheme();
  return (
   <div style={{ height: 600, width: "100%",}}>
-   <DataGrid rows={rows} columns={columns}sx={{fontSize:"1rem" }} />
+       <Textheader isDashboard={true} title={"Manage Team"} text={""} />
+
+   <DataGrid rows={rows} 
+     //@ts-ignore
+   columns={columns}sx={{fontSize:"1rem" }} />
   </div>
  );
 };

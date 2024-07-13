@@ -1,10 +1,11 @@
-import React from "react"
+
 import { ResponsiveBar } from "@nivo/bar"
 import { Box, useTheme } from "@mui/material"
 import data from "./chartdata"
 
 
-const Bar = () => {
+
+const Bar = ({isDashboard = false}) => {
 
   const theme = useTheme()
  const MyResponsiveBar = () => (
@@ -209,7 +210,8 @@ const Bar = () => {
  )
 
  return (
-    <Box style={{ height: "75vh"} }>
+    <Box style={{ height: isDashboard ? "300px" : "75vh"} }>
+
    <MyResponsiveBar />
 </Box>
  )

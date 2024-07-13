@@ -1,6 +1,7 @@
 import { Alert, Box, Button, MenuItem, Snackbar, Stack, TextField } from "@mui/material"
 import React from "react"
 import { useForm } from "react-hook-form"
+import Textheader from "../../components/Textheader"
 
 const data = [
  {
@@ -24,13 +25,12 @@ const Form = () => {
  const {
   register,
   handleSubmit,
-  watch,
   formState: { errors },
  } = useForm()
 
  const [open, setOpen] = React.useState(false)
 
- const handleClose = (event, reason: string) => {
+ const handleClose = ( reason: any) => {
   if (reason === "clickaway") {
   }
 
@@ -48,6 +48,8 @@ const Form = () => {
 
  return (
   <Box onSubmit={handleSubmit(onSubmit)} display={"flex"} component="form" flexDirection={"column"} gap={3}>
+    <Textheader isDashboard={true} title={"Form"} text={"please fill below if you want to join our team"} />
+
    <Stack direction={"row"} display={"flex"} gap={3}>
     <TextField
      error={Boolean(errors.firstName)}

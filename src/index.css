@@ -3,3 +3,14 @@
  font-family: "Roboto", sans-serif;
 
 }
+::-webkit-scrollbar{
+    width: 15px;
+   
+}
+::-webkit-scrollbar-track{
+    background-color:#53585c 
+}
+::-webkit-scrollbar-thumb{
+background-color:#1f77b4; ; border-radius: 5px;
+
+} 

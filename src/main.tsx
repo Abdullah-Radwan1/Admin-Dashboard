@@ -10,10 +10,12 @@ import Invoices from "./pages/invoices/Invoices"
 import Form from "./pages/form/Form"
 import Calendar from "./pages/calendar/Calendar"
 import FAQ from "./pages/faq/FAQ"
-import PieChart from "./pages/pieChart/PieChart"
+import PieChart from "./pages/pieChart/Pie"
 import LineChart from "./pages/lineChart/LineChart"
 import Geography from "./pages/geography/Geography"
-import Bar from "./pages/barChart/bar"
+
+import BarChart from "./pages/barChart/BarChart"
+import NotFound from "./pages/notFound/NotFound"
 
 const router = createBrowserRouter(
  createRoutesFromElements(
@@ -25,16 +27,22 @@ const router = createBrowserRouter(
    <Route path="/form" element={<Form />} />
    <Route path="/calendar" element={<Calendar />} />
    <Route path="/faq" element={<FAQ />} />
-   <Route path="/bar" element={<Bar />} />
+   <Route path="/bar" element={<BarChart />} />
    <Route path="/pie" element={<PieChart />} />
    <Route path="/line" element={<LineChart />} />
    <Route path="/geography" element={<Geography />} />
+   <Route path="*" element={<NotFound/>} />
   </Route>,
  ),
 )
+const rootElement = document.getElementById("root");
 
-ReactDOM.createRoot(document.getElementById("root")).render(
- <React.StrictMode>
-  <RouterProvider router={router} />
- </React.StrictMode>,
-)
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>,
+  );
+} else {
+  console.error("Failed to find the root element");
+}

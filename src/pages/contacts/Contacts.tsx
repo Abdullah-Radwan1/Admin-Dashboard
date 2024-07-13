@@ -1,12 +1,12 @@
-import React from "react";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { columns, rows } from "./data";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid"
+import { columns, rows } from "./data"
+import Textheader from "../../components/Textheader"
 
 const Contacts = () => {
  return (
   <div style={{ height: 600, width: "100%" }}>
+   <Textheader isDashboard={true} title={"Contact"} text={"our company contacts"} />
    <DataGrid
-
     rows={rows}
     columns={columns}
     slots={{
@@ -14,7 +14,7 @@ const Contacts = () => {
     }}
    />
   </div>
- );
-};
+ )
+}
 
-export default Contacts;
+export default Contacts

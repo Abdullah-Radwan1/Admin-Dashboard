@@ -1,4 +1,12 @@
-export const rows = [
+interface Row {
+    id: number;
+    name: string;
+    email: string;
+    age: number;
+    phone: string;
+    access: "Admin" | "Manager" | "User";
+  }
+export const rows:Row[] = [
  {
   id: 1,
   name: "Jon Snow",

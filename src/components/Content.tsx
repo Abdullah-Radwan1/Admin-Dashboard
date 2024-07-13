@@ -1,5 +1,5 @@
-import React from "react"
-import { Box, styled, Typography } from "@mui/material"
+
+import { Box, styled } from "@mui/material"
 import { Outlet } from "react-router-dom"
 
 const Content = () => {

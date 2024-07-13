@@ -11,6 +11,7 @@ import {
  Stack,
  styled,
  Theme,
+ Tooltip,
  Typography,
  useTheme,
 } from "@mui/material";
@@ -120,14 +121,18 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
    </DrawerHeader>
    <Stack justifyContent={"center"} alignItems={"center"} sx={{ mb: open ? 4 : 0 }}>
     <Avatar
-     sx={{
+    src="../../public/166556381_786865882260024_7965935742491160141_n copy.jpg"
+     sx={
+      {
       mx: "auto",
-      width: open ? 88 : 44,
-      height: open ? 88 : 44,
+      width: open ? 88 : 50,
+      height: open ? 88 : 50,
       my: 1,
       border: "2px solid grey",
       transition: "0.25s",
-     }}
+      
+     }
+}
     />
     <Typography sx={{ fontSize: open ? "20px" : 0, transition: "0.25s" }}>Abdullah</Typography>
     <Typography
@@ -145,7 +150,9 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
    <List>
     {arr1.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <ListItemButton
+        <Tooltip title={open ? null : item.text} placement="right" >
+ 
+        <ListItemButton
        onClick={() => navigate(`${item.path}`)}
        sx={{
         minHeight: 48,
@@ -159,17 +166,16 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
          minWidth: 0,
          mr: open ? 3 : "auto",
          justifyContent: "center",
-
         }}
        >
         {item.icon}
        </ListItemIcon>
 
-       <ListItemText
-        primary={item.text}
-        sx={{  opacity: open ? 1 : 0 }}
-       />
+       <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
       </ListItemButton>
+
+</Tooltip>
+
      </ListItem>
     ))}
    </List>
@@ -177,12 +183,15 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
    <List>
     {arr2.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <ListItemButton
+        <Tooltip title={open ? null : item.text} placement="right" >
+ 
+        <ListItemButton
        onClick={() => navigate(`${item.path}`)}
        sx={{
         minHeight: 48,
         justifyContent: open ? "initial" : "center",
         px: 2.5,
+        backgroundColor: location.pathname === item.path ? theme.palette.mode ==="dark" ? grey[800] : grey[300]  : null
        }}
       >
        <ListItemIcon
@@ -197,6 +206,9 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
 
        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
       </ListItemButton>
+
+</Tooltip>
+
      </ListItem>
     ))}
    </List>
@@ -204,12 +216,15 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
    <List>
     {arr3.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <ListItemButton
+        <Tooltip title={open ? null : item.text} placement="right" >
+ 
+        <ListItemButton
        onClick={() => navigate(`${item.path}`)}
        sx={{
         minHeight: 48,
         justifyContent: open ? "initial" : "center",
         px: 2.5,
+        backgroundColor: location.pathname === item.path ? theme.palette.mode ==="dark" ? grey[800] : grey[300]  : null
        }}
       >
        <ListItemIcon
@@ -224,6 +239,9 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
 
        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
       </ListItemButton>
+
+</Tooltip>
+
      </ListItem>
     ))}
    </List>

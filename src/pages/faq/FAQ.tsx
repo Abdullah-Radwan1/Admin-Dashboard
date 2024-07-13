@@ -1,4 +1,4 @@
-import React from "react"
+
 import Accordion from "@mui/material/Accordion"
 import AccordionActions from "@mui/material/AccordionActions"
 import AccordionSummary from "@mui/material/AccordionSummary"
@@ -6,9 +6,13 @@ import AccordionDetails from "@mui/material/AccordionDetails"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import Button from "@mui/material/Button"
 import { Stack } from "@mui/material"
+import Textheader from "../../components/Textheader"
 const FAQ = () => {
  return (
-  <Stack direction={"column"} gap={2} fontSize={"1.1rem"} >
+
+<Stack direction={"column"} gap={2} fontSize={"1.1rem"} >
+<Textheader isDashboard={true} title={"Frequently asked questions"} text={"here you can find the most asked questions by our costumers"} />
+
    <Accordion>
     <AccordionSummary sx={{fontWeight:"bolder"}} expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
      how did we get here
