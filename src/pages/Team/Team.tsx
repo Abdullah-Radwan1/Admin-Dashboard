@@ -58,7 +58,7 @@ const Team = () => {
         access == "Admin"
          ? theme.palette.secondary.dark
          : access == "Manager"
-         ? theme.palette.info.main
+         ? theme.palette.primary.dark
          : "#3da58a",
          display:"flex",
          justifyContent:"space-evenly",

@@ -10,7 +10,7 @@ import Invoices from "./pages/invoices/Invoices"
 import Form from "./pages/form/Form"
 import Calendar from "./pages/calendar/Calendar"
 import FAQ from "./pages/faq/FAQ"
-import PieChart from "./pages/pieChart/Pie"
+import PieChart from "./pages/pieChart/pieChart"
 import LineChart from "./pages/lineChart/LineChart"
 import Geography from "./pages/geography/Geography"
 

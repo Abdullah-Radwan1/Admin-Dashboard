@@ -6,11 +6,11 @@ import { DownloadOutlined } from "@mui/icons-material"
 const Row2 = () => {
  const theme = useTheme()
  return (
-  <Stack direction={"row"} sx={{ mt: 2 }} gap={2} flexWrap={"wrap"}>
-   <Paper sx={{  flexGrow: 1, minWidth: "400px" }}>
+  <Stack direction={"row"} sx={{ mt: 1 }} gap={1} flexWrap={"wrap"}>
+   <Paper sx={{ flexGrow: 1, minWidth: "400px" }}>
     <Stack alignItems={"center"} direction={"row"} flexWrap={"wrap"} justifyContent={"space-between"}>
      <Box>
-      <Typography color={theme.palette.secondary.main} mb={1} mt={2} ml={4} variant="h6" fontWeight={"bold"}>
+      <Typography color={theme.palette.success.light} mb={1} mt={2} ml={4} variant="h6" fontWeight={"bold"}>
        Revenue Generated
       </Typography>
       <Typography variant="body2" ml={4}>
@@ -32,12 +32,12 @@ const Row2 = () => {
      overflow: "auto",
      borderRadius: "4px",
      maxHeight: "370px",
-flexGrow:1,
-minWidth:"500px"
+     flexGrow: 1,
+     minWidth: "500px",
     }}
    >
-    <Paper >
-     <Typography color={theme.palette.secondary.main} fontWeight={"bold"} p={1.2} variant="h6">
+    <Paper>
+     <Typography color={theme.palette.success.light} fontWeight={"bold"} p={1.2} variant="h6">
       Recent Transactions
      </Typography>
     </Paper>

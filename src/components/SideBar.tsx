@@ -121,7 +121,7 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
    </DrawerHeader>
    <Stack justifyContent={"center"} alignItems={"center"} sx={{ mb: open ? 4 : 0 }}>
     <Avatar
-    src="../../public/166556381_786865882260024_7965935742491160141_n copy.jpg"
+    src="https://i.imghippo.com/files/NmiHV1720909328.jpg"
      sx={
       {
       mx: "auto",
@@ -143,7 +143,7 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
      }}
      color={"primary"}
     >
-     admin
+     Admin
     </Typography>
    </Stack>
    <Divider />
