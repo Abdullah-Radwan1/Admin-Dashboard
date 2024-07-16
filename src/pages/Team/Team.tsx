@@ -34,7 +34,7 @@ const Team = () => {
   {
    field: "phone",
    headerName: "phone",
-   width: 150,
+   width: 100,
    flex: 1,
    align: "center",
    headerAlign: "center",
@@ -42,7 +42,7 @@ const Team = () => {
   {
    field: "access",
    headerName: "access",
-   width: 10,
+   width: "20px",
    flex: 1,
    align: "center",
    headerAlign: "center",
@@ -53,7 +53,7 @@ const Team = () => {
     return (
      <Box
       sx={{
-        width:"100px",
+        width: "100px",
        backgroundColor:
         access == "Admin"
          ? theme.palette.secondary.dark

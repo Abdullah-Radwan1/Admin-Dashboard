@@ -11,14 +11,14 @@ interface CardProps {
   scheme: any;
 }
 
-const Card: React.FC<CardProps> = ({ icon, title, subTitle, increase, data, scheme }) => {
+const Card:React.FC<CardProps> = ({ icon, title, subTitle, increase, data, scheme }) => {
 
   const theme = useTheme();
   return (
     <Paper
       sx={{
         flexGrow: 1,
-        minWidth: "333px",
+        width:"240px",
         p: 1.5,
         display: "flex",
         justifyContent: "space-between",

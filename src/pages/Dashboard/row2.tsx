@@ -7,7 +7,7 @@ const Row2 = () => {
  const theme = useTheme()
  return (
   <Stack direction={"row"} sx={{ mt: 1 }} gap={1} flexWrap={"wrap"}>
-   <Paper sx={{ flexGrow: 1, minWidth: "400px" }}>
+   <Paper sx={{ flexGrow: 1, minWidth: "300px" , }}>
     <Stack alignItems={"center"} direction={"row"} flexWrap={"wrap"} justifyContent={"space-between"}>
      <Box>
       <Typography color={theme.palette.success.light} mb={1} mt={2} ml={4} variant="h6" fontWeight={"bold"}>
@@ -33,7 +33,7 @@ const Row2 = () => {
      borderRadius: "4px",
      maxHeight: "370px",
      flexGrow: 1,
-     minWidth: "500px",
+     minWidth: "400px",
     }}
    >
     <Paper>
