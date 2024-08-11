@@ -1,264 +1,131 @@
+import { Alert, Box, Button, MenuItem, Snackbar, Stack, TextField } from "@mui/material";
 import React from "react";
-import {
- Avatar,
- Divider,
- IconButton,
- List,
- ListItem,
- ListItemButton,
- ListItemIcon,
- ListItemText,
- Stack,
- styled,
- Theme,
- Tooltip,
- Typography,
- useTheme,
-} from "@mui/material";
+import { useForm } from "react-hook-form";
+import Textheader from "../../components/Textheader";
 
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import MuiDrawer from "@mui/material/Drawer";
-import { CSSObject } from "@emotion/react";
-import {
- BarChartOutlined,
- CalendarTodayOutlined,
- ContactMail,
- HelpOutlineOutlined,
- HomeOutlined,
- MapOutlined,
- PeopleOutline,
- PersonOutlined,
- PieChartOutlineOutlined,
- ReceiptOutlined,
- TimelineOutlined,
-} from "@mui/icons-material";
-import { useLocation, useNavigate } from "react-router-dom";
-import { grey } from "@mui/material/colors";
-
-const drawerWidth = 240;
-const Drawer = styled(MuiDrawer, {
- shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
- width: drawerWidth,
- flexShrink: 0,
- whiteSpace: "nowrap",
- boxSizing: "border-box",
- ...(open && {
-  ...openedMixin(theme),
-  "& .MuiDrawer-paper": openedMixin(theme),
- }),
- ...(!open && {
-  ...closedMixin(theme),
-  "& .MuiDrawer-paper": closedMixin(theme),
- }),
-}));
-const DrawerHeader = styled("div")(({ theme }) => ({
- display: "flex",
- alignItems: "center",
- justifyContent: "flex-end",
- padding: theme.spacing(0, 1),
- // necessary for content to be below app bar
- ...theme.mixins.toolbar,
-}));
-const openedMixin = (theme: Theme): CSSObject => ({
- width: drawerWidth,
- transition: theme.transitions.create("width", {
-  easing: theme.transitions.easing.sharp,
-  duration: theme.transitions.duration.enteringScreen,
- }),
- overflowX: "hidden",
-});
-
-const closedMixin = (theme: Theme): CSSObject => ({
- transition: theme.transitions.create("width", {
-  easing: theme.transitions.easing.sharp,
-  duration: theme.transitions.duration.leavingScreen,
- }),
- overflowX: "hidden",
- width: `calc(${theme.spacing(7)} + 1px)`,
- [theme.breakpoints.up("sm")]: {
-  width: `calc(${theme.spacing(8)} + 1px)`,
- },
-});
-
-interface HeaderProps {
- open: boolean;
- handleDrawerClose: () => void;
-}
-
-const arr1 = [
- { text: "Dashboard", icon: <HomeOutlined />, path: "/" },
- { text: "manage team", icon: <PeopleOutline />, path: "/team" },
- { text: "contact information", icon: <ContactMail />, path: "/contact" },
- { text: "invoices balance", icon: <ReceiptOutlined />, path: "/invoices" },
-];
-const arr2 = [
- { text: "Profile Form", icon: <PersonOutlined />, path: "/form" },
- { text: "Calendar", icon: <CalendarTodayOutlined />, path: "/calendar" },
+const data = [
  {
-  text: "FAQ Page",
-  icon: <HelpOutlineOutlined />,
-  path: "/faq",
+  value: "Admin",
+  label: "Admin",
+ },
+ {
+  value: "Manger",
+  label: "Manger",
+ },
+ {
+  value: "User",
+  label: "User",
  },
 ];
-const arr3 = [
- { text: "Bar Chart", icon: <BarChartOutlined />, path: "/bar" },
- { text: "Pie Chart", icon: <PieChartOutlineOutlined />, path: "/pie" },
- { text: "Line Chart", icon: <TimelineOutlined />, path: "/line" },
- { text: "Geography Chart", icon: <MapOutlined />, path: "/geography" },
-];
-const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
- const navigate = useNavigate();
- const theme = useTheme();
- const location = useLocation();
+const regEmail =
+ /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const phoneRegExp =
+ /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
+const Form = () => {
+ const {
+  register,
+  handleSubmit,
+  formState: { errors },
+ } = useForm();
+
+ const [open, setOpen] = React.useState(false);
+
+ const handleClose = (reason: any) => {
+  if (reason === "clickaway") {
+  }
+
+  setOpen(false);
+ };
+
+ const handleClick = () => {
+  setOpen(true);
+ };
+
+ const onSubmit = () => {
+  console.log("doneeeeeeeeeeee");
+  handleClick();
+ };
+
  return (
-  <Drawer variant="permanent" open={open}>
-   <DrawerHeader>
-    <IconButton onClick={handleDrawerClose}>
-     {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-    </IconButton>
-   </DrawerHeader>
-   <Stack
-    justifyContent={"center"}
-    alignItems={"center"}
-    sx={{ mb: open ? 4 : 0 }}
-   >
-    <Avatar
-     src="https://i.imghippo.com/files/NmiHV1720909328.jpg"
-     sx={{
-      mx: "auto",
-      width: open ? 88 : 50,
-      height: open ? 88 : 50,
-      my: 1,
-      border: "2px solid grey",
-      transition: "0.25s",
-     }}
+  <Box
+   onSubmit={handleSubmit(onSubmit)}
+   display={"flex"}
+   component="form"
+   flexDirection={"column"}
+   gap={3}
+  >
+   <Textheader
+    isDashboard={true}
+    title={"Form"}
+    text={"please fill below if you want to join our team"}
+   />
+
+   <Stack direction={"row"} display={"flex"} gap={3}>
+    <TextField
+     error={Boolean(errors.firstName)}
+     helperText={Boolean(errors.firstName) ? "required field & min 3 character" : null}
+     {...register("firstName", { required: true, minLength: 3 })}
+     sx={{ flex: "1" }}
+     label="first name"
+     variant="filled"
     />
-    <Typography sx={{ fontSize: open ? "20px" : 0, transition: "0.25s" }}>
-     Abdullah
-    </Typography>
-    <Typography
-     sx={{
-      fontSize: open ? 16 : 0,
-      transition: "0.25s",
-      color: theme.palette.info.main,
-     }}
-     color={"primary"}
-    >
-     Admin
-    </Typography>
+    <TextField
+     error={Boolean(errors.lastName)}
+     helperText={Boolean(errors.lastName) ? "min 3 character" : null}
+     {...register("lastName", { required: false, minLength: 3 })}
+     sx={{ flex: "1" }}
+     label="last name"
+     variant="filled"
+    />
    </Stack>
-   <Divider />
-   {/* first list  */}
-   <List>
-    {arr1.map((item) => (
-     <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <Tooltip title={open ? null : item.text} placement="right">
-       <ListItemButton
-        onClick={() => navigate(`${item.path}`)}
-        sx={{
-         minHeight: 48,
-         justifyContent: open ? "initial" : "center",
-         px: 2.5,
-         backgroundColor:
-          location.pathname === item.path
-           ? theme.palette.mode === "dark"
-             ? grey[800]
-             : grey[300]
-           : null,
-        }}
-       >
-        <ListItemIcon
-         sx={{
-          minWidth: 0,
-          mr: open ? 3 : "auto",
-          justifyContent: "center",
-         }}
-        >
-         {item.icon}
-        </ListItemIcon>
 
-        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-       </ListItemButton>
-      </Tooltip>
-     </ListItem>
+   <TextField
+    error={Boolean(errors.email)}
+    helperText={Boolean(errors.email) ? "please provide a valid email" : null}
+    {...register("email", { required: false, pattern: regEmail })}
+    label="email"
+    variant="filled"
+   />
+   <TextField
+    error={Boolean(errors.number)}
+    helperText={Boolean(errors.number) ? "please provide a valid number" : null}
+    {...register("number", { required: false, pattern: phoneRegExp })}
+    label="phone number"
+    variant="filled"
+   />
+   <TextField label="address 1" variant="filled" />
+   <TextField
+    variant="filled"
+    id="outlined-select-currency"
+    select
+    label="Role"
+    defaultValue="User"
+   >
+    {data.map((option) => (
+     <MenuItem key={option.value} value={option.value}>
+      {option.label}
+     </MenuItem>
     ))}
-   </List>
-   <Divider />
-   {/* second list  */}
-   <List>
-    {arr2.map((item) => (
-     <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <Tooltip title={open ? null : item.text} placement="right">
-       <ListItemButton
-        onClick={() => navigate(`${item.path}`)}
-        sx={{
-         minHeight: 48,
-         justifyContent: open ? "initial" : "center",
-         px: 2.5,
-         backgroundColor:
-          location.pathname === item.path
-           ? theme.palette.mode === "dark"
-             ? grey[800]
-             : grey[300]
-           : null,
-        }}
-       >
-        <ListItemIcon
-         sx={{
-          minWidth: 0,
-          mr: open ? 3 : "auto",
-          justifyContent: "center",
-         }}
-        >
-         {item.icon}
-        </ListItemIcon>
-
-        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-       </ListItemButton>
-      </Tooltip>
-     </ListItem>
-    ))}
-   </List>
-   <Divider />
-   {/* third list  */}
-   <List>
-    {arr3.map((item) => (
-     <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-      <Tooltip title={open ? null : item.text} placement="right">
-       <ListItemButton
-        onClick={() => navigate(`${item.path}`)}
-        sx={{
-         minHeight: 48,
-         justifyContent: open ? "initial" : "center",
-         px: 2.5,
-         backgroundColor:
-          location.pathname === item.path
-           ? theme.palette.mode === "dark"
-             ? grey[800]
-             : grey[300]
-           : null,
-        }}
-       >
-        <ListItemIcon
-         sx={{
-          minWidth: 0,
-          mr: open ? 3 : "auto",
-          justifyContent: "center",
-         }}
-        >
-         {item.icon}
-        </ListItemIcon>
-
-        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-       </ListItemButton>
-      </Tooltip>
-     </ListItem>
-    ))}
-   </List>
-  </Drawer>
+   </TextField>
+   <Box sx={{ textAlign: "center" }}>
+    <Button type="submit" variant="contained">
+     Create new rule
+    </Button>
+   </Box>
+   <Snackbar
+    anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    open={open}
+    autoHideDuration={4000}
+    onClose={handleClose}
+   >
+    <Alert severity="success" sx={{ width: "100%" }}>
+     New Rule has been created
+    </Alert>
+   </Snackbar>
+  </Box>
  );
 };
 
-export default SideBar;
+export default Form;
