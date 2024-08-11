@@ -6,7 +6,11 @@ interface textHeaderTypes {
  text: string
  isDashboard: boolean
 }
-const Textheader: React.FC<textHeaderTypes> = ({ title, text, isDashboard = false }) => {
+const Textheader: React.FC<textHeaderTypes> = ({
+ title,
+ text,
+ isDashboard = false,
+}) => {
  const theme = useTheme()
  return (
   <Box mb={isDashboard ? 2 : 4}>

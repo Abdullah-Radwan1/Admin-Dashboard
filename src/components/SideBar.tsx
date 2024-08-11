@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
  Avatar,
@@ -37,22 +38,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { grey } from "@mui/material/colors";
 
 const drawerWidth = 240;
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(
- ({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  ...(open && {
-   ...openedMixin(theme),
-   "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-   ...closedMixin(theme),
-   "& .MuiDrawer-paper": closedMixin(theme),
-  }),
+const Drawer = styled(MuiDrawer, {
+ shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+ width: drawerWidth,
+ flexShrink: 0,
+ whiteSpace: "nowrap",
+ boxSizing: "border-box",
+ ...(open && {
+  ...openedMixin(theme),
+  "& .MuiDrawer-paper": openedMixin(theme),
  }),
-);
+ ...(!open && {
+  ...closedMixin(theme),
+  "& .MuiDrawer-paper": closedMixin(theme),
+ }),
+}));
 const DrawerHeader = styled("div")(({ theme }) => ({
  display: "flex",
  alignItems: "center",
@@ -111,7 +112,7 @@ const arr3 = [
 const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
  const navigate = useNavigate();
  const theme = useTheme();
- const location = useLocation()
+ const location = useLocation();
  return (
   <Drawer variant="permanent" open={open}>
    <DrawerHeader>
@@ -119,22 +120,25 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
      {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
     </IconButton>
    </DrawerHeader>
-   <Stack justifyContent={"center"} alignItems={"center"} sx={{ mb: open ? 4 : 0 }}>
+   <Stack
+    justifyContent={"center"}
+    alignItems={"center"}
+    sx={{ mb: open ? 4 : 0 }}
+   >
     <Avatar
-    src="https://i.imghippo.com/files/NmiHV1720909328.jpg"
-     sx={
-      {
+     src="https://i.imghippo.com/files/NmiHV1720909328.jpg"
+     sx={{
       mx: "auto",
       width: open ? 88 : 50,
       height: open ? 88 : 50,
       my: 1,
       border: "2px solid grey",
       transition: "0.25s",
-      
-     }
-}
+     }}
     />
-    <Typography sx={{ fontSize: open ? "20px" : 0, transition: "0.25s" }}>Abdullah</Typography>
+    <Typography sx={{ fontSize: open ? "20px" : 0, transition: "0.25s" }}>
+     Abdullah
+    </Typography>
     <Typography
      sx={{
       fontSize: open ? 16 : 0,
@@ -147,101 +151,110 @@ const SideBar: React.FC<HeaderProps> = ({ open, handleDrawerClose }) => {
     </Typography>
    </Stack>
    <Divider />
+   {/* first list  */}
    <List>
     {arr1.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-        <Tooltip title={open ? null : item.text} placement="right" >
- 
-        <ListItemButton
-       onClick={() => navigate(`${item.path}`)}
-       sx={{
-        minHeight: 48,
-        justifyContent: open ? "initial" : "center",
-        px: 2.5,
-        backgroundColor: location.pathname === item.path ? theme.palette.mode ==="dark" ? grey[800] : grey[300]  : null
-       }}
-      >
-       <ListItemIcon
+      <Tooltip title={open ? null : item.text} placement="right">
+       <ListItemButton
+        onClick={() => navigate(`${item.path}`)}
         sx={{
-         minWidth: 0,
-         mr: open ? 3 : "auto",
-         justifyContent: "center",
+         minHeight: 48,
+         justifyContent: open ? "initial" : "center",
+         px: 2.5,
+         backgroundColor:
+          location.pathname === item.path
+           ? theme.palette.mode === "dark"
+             ? grey[800]
+             : grey[300]
+           : null,
         }}
        >
-        {item.icon}
-       </ListItemIcon>
+        <ListItemIcon
+         sx={{
+          minWidth: 0,
+          mr: open ? 3 : "auto",
+          justifyContent: "center",
+         }}
+        >
+         {item.icon}
+        </ListItemIcon>
 
-       <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-      </ListItemButton>
-
-</Tooltip>
-
+        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+       </ListItemButton>
+      </Tooltip>
      </ListItem>
     ))}
    </List>
    <Divider />
+   {/* second list  */}
    <List>
     {arr2.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-        <Tooltip title={open ? null : item.text} placement="right" >
- 
-        <ListItemButton
-       onClick={() => navigate(`${item.path}`)}
-       sx={{
-        minHeight: 48,
-        justifyContent: open ? "initial" : "center",
-        px: 2.5,
-        backgroundColor: location.pathname === item.path ? theme.palette.mode ==="dark" ? grey[800] : grey[300]  : null
-       }}
-      >
-       <ListItemIcon
+      <Tooltip title={open ? null : item.text} placement="right">
+       <ListItemButton
+        onClick={() => navigate(`${item.path}`)}
         sx={{
-         minWidth: 0,
-         mr: open ? 3 : "auto",
-         justifyContent: "center",
+         minHeight: 48,
+         justifyContent: open ? "initial" : "center",
+         px: 2.5,
+         backgroundColor:
+          location.pathname === item.path
+           ? theme.palette.mode === "dark"
+             ? grey[800]
+             : grey[300]
+           : null,
         }}
        >
-        {item.icon}
-       </ListItemIcon>
+        <ListItemIcon
+         sx={{
+          minWidth: 0,
+          mr: open ? 3 : "auto",
+          justifyContent: "center",
+         }}
+        >
+         {item.icon}
+        </ListItemIcon>
 
-       <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-      </ListItemButton>
-
-</Tooltip>
-
+        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+       </ListItemButton>
+      </Tooltip>
      </ListItem>
     ))}
    </List>
    <Divider />
+   {/* third list  */}
    <List>
     {arr3.map((item) => (
      <ListItem key={item.text} disablePadding sx={{ display: "block" }}>
-        <Tooltip title={open ? null : item.text} placement="right" >
- 
-        <ListItemButton
-       onClick={() => navigate(`${item.path}`)}
-       sx={{
-        minHeight: 48,
-        justifyContent: open ? "initial" : "center",
-        px: 2.5,
-        backgroundColor: location.pathname === item.path ? theme.palette.mode ==="dark" ? grey[800] : grey[300]  : null
-       }}
-      >
-       <ListItemIcon
+      <Tooltip title={open ? null : item.text} placement="right">
+       <ListItemButton
+        onClick={() => navigate(`${item.path}`)}
         sx={{
-         minWidth: 0,
-         mr: open ? 3 : "auto",
-         justifyContent: "center",
+         minHeight: 48,
+         justifyContent: open ? "initial" : "center",
+         px: 2.5,
+         backgroundColor:
+          location.pathname === item.path
+           ? theme.palette.mode === "dark"
+             ? grey[800]
+             : grey[300]
+           : null,
         }}
        >
-        {item.icon}
-       </ListItemIcon>
+        <ListItemIcon
+         sx={{
+          minWidth: 0,
+          mr: open ? 3 : "auto",
+          justifyContent: "center",
+         }}
+        >
+         {item.icon}
+        </ListItemIcon>
 
-       <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-      </ListItemButton>
-
-</Tooltip>
-
+        <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
+       </ListItemButton>
+      </Tooltip>
      </ListItem>
     ))}
    </List>

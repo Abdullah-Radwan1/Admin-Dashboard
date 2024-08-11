@@ -5,8 +5,11 @@ import Pie from "./Pie"
 const PieChart = ({ isDashboard = false }) => {
  return (
   <Box height={isDashboard ? "350px" : "75vh"}>
-   <Textheader isDashboard={true} title={"pie Chart"} text={"Data of the average individual income"} />
-
+   <Textheader
+    isDashboard={true}
+    title={"pie Chart"}
+    text={"Data of the average individual income"}
+   />
    <Pie />
   </Box>
  )

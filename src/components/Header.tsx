@@ -1,5 +1,13 @@
 import React from "react";
-import { alpha, Box, IconButton, InputBase, Stack, styled, useTheme } from "@mui/material";
+import {
+ alpha,
+ Box,
+ IconButton,
+ InputBase,
+ Stack,
+ styled,
+ useTheme,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import SearchIcon from "@mui/icons-material/Search";
@@ -10,18 +18,17 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import EuroOutlinedIcon from "@mui/icons-material/EuroOutlined";
 
-
 type Mode = "light" | "dark";
 interface AppBarProps extends MuiAppBarProps {
  open?: boolean;
 }
 interface HeaderProps {
-    open: boolean;
-    handleDrawerOpen: () => void;
-    setMode: (mode: Mode) => void;
-  }
-  const drawerWidth = 240;
-  const AppBar = styled(MuiAppBar, {
+ open: boolean;
+ handleDrawerOpen: () => void;
+ setMode: (mode: Mode) => void;
+}
+const drawerWidth = 240;
+const AppBar = styled(MuiAppBar, {
  shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
  zIndex: theme.zIndex.drawer + 1,
@@ -82,7 +89,8 @@ const Header: React.FC<HeaderProps> = ({ setMode, open, handleDrawerOpen }) => {
  const theme = useTheme();
 
  return (
-  <div>ss
+  <div>
+   ss
    <AppBar position="fixed" open={open}>
     <Toolbar>
      <IconButton
@@ -101,18 +109,29 @@ const Header: React.FC<HeaderProps> = ({ setMode, open, handleDrawerOpen }) => {
       <SearchIconWrapper>
        <SearchIcon />
       </SearchIconWrapper>
-      <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
+      <StyledInputBase
+       placeholder="Search…"
+       inputProps={{ "aria-label": "search" }}
+      />
      </Search>
      <Box flexGrow={1} />
      <Stack direction={"row"}>
       {theme.palette.mode === "light" ? (
-       <IconButton onClick={() => {setMode("dark") ;localStorage.setItem("currentMode", "light")} }  >
-  
+       <IconButton
+        onClick={() => {
+         setMode("dark");
+         localStorage.setItem("currentMode", "light");
+        }}
+       >
         <WbSunnyIcon color="inherit" />
        </IconButton>
       ) : (
-       <IconButton onClick={() =>  {setMode("light") ;localStorage.setItem("currentMode", "dark")}} >
- 
+       <IconButton
+        onClick={() => {
+         setMode("light");
+         localStorage.setItem("currentMode", "dark");
+        }}
+       >
         <DarkModeOutlinedIcon color="inherit" />
        </IconButton>
       )}

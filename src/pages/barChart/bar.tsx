@@ -1,125 +1,120 @@
-
 import { ResponsiveBar } from "@nivo/bar"
 import { Box, useTheme } from "@mui/material"
 import data from "./chartdata"
 
-
-
-const Bar = ({isDashboard = false}) => {
-
-  const theme = useTheme()
+const Bar = ({ isDashboard = false }) => {
+ const theme = useTheme()
  const MyResponsiveBar = () => (
   <ResponsiveBar
-  theme={{
-  
+   theme={{
     "text": {
-        "fontSize": 11,
-        "fill": theme.palette.text.primary,
-        "outlineWidth": 0,
-        "outlineColor": "transparent"
+     "fontSize": 11,
+     "fill": theme.palette.text.primary,
+     "outlineWidth": 0,
+     "outlineColor": "transparent",
     },
     "axis": {
-        "domain": {
-            "line": {
-                "stroke": "#777777",
-                "strokeWidth": 1
-            }
-        },
-        "legend": {
-            "text": {
-                "fontSize": 12,
-                "fill": theme.palette.text.primary,
-                "outlineWidth": 0,
-                "outlineColor": "transparent"
-            }
-        },
-        "ticks": {
-            "line": {
-                "stroke": "#777777",
-                "strokeWidth": 1
-            },
-            "text": {
-                "fontSize": 11,
-                "fill": theme.palette.text.primary,
-                "outlineWidth": 0,
-                "outlineColor": "transparent"
-            }
-        }
+     "domain": {
+      "line": {
+       "stroke": "#777777",
+       "strokeWidth": 1,
+      },
+     },
+     "legend": {
+      "text": {
+       "fontSize": 12,
+       "fill": theme.palette.text.primary,
+       "outlineWidth": 0,
+       "outlineColor": "transparent",
+      },
+     },
+     "ticks": {
+      "line": {
+       "stroke": "#777777",
+       "strokeWidth": 1,
+      },
+      "text": {
+       "fontSize": 11,
+       "fill": theme.palette.text.primary,
+       "outlineWidth": 0,
+       "outlineColor": "transparent",
+      },
+     },
     },
     "grid": {
-        "line": {
-            "stroke": "#dddddd",
-            "strokeWidth": 1
-        }
+     "line": {
+      "stroke": "#dddddd",
+      "strokeWidth": 1,
+     },
     },
     "legends": {
-        "title": {
-            "text": {
-                "fontSize": 11,
-                "fill": theme.palette.text.primary,
-                "outlineWidth": 0,
-                "outlineColor": "transparent"
-            }
-        },
-        "text": {
-            "fontSize": 11,
-            "fill": theme.palette.text.primary,
-            "outlineWidth": 0,
-            "outlineColor": "transparent"
-        },
-        "ticks": {
-            "line": {},
-            "text": {
-                "fontSize": 10,
-                "fill": theme.palette.text.primary,
-                "outlineWidth": 0,
-                "outlineColor": "transparent"
-            }
-        }
+     "title": {
+      "text": {
+       "fontSize": 11,
+       "fill": theme.palette.text.primary,
+       "outlineWidth": 0,
+       "outlineColor": "transparent",
+      },
+     },
+     "text": {
+      "fontSize": 11,
+      "fill": theme.palette.text.primary,
+      "outlineWidth": 0,
+      "outlineColor": "transparent",
+     },
+     "ticks": {
+      "line": {},
+      "text": {
+       "fontSize": 10,
+       "fill": theme.palette.text.primary,
+       "outlineWidth": 0,
+       "outlineColor": "transparent",
+      },
+     },
     },
     "annotations": {
-        "text": {
-            "fontSize": 13,
-            "fill": theme.palette.text.primary,
-            "outlineWidth": 2,
-            "outlineColor": "#ffffff",
-            "outlineOpacity": 1
-        },
-        "link": {
-            "stroke": "#000000",
-            "strokeWidth": 1,
-            "outlineWidth": 2,
-            "outlineColor": "#ffffff",
-            "outlineOpacity": 1
-        },
-        "outline": {
-            "stroke": "#000000",
-            "strokeWidth": 2,
-            "outlineWidth": 2,
-            "outlineColor": "#ffffff",
-            "outlineOpacity": 1
-        },
-        "symbol": {
-            "fill": "#000000",
-            "outlineWidth": 2,
-            "outlineColor": "#ffffff",
-            "outlineOpacity": 1
-        }
+     "text": {
+      "fontSize": 13,
+      "fill": theme.palette.text.primary,
+      "outlineWidth": 2,
+      "outlineColor": "#ffffff",
+      "outlineOpacity": 1,
+     },
+     "link": {
+      "stroke": "#000000",
+      "strokeWidth": 1,
+      "outlineWidth": 2,
+      "outlineColor": "#ffffff",
+      "outlineOpacity": 1,
+     },
+     "outline": {
+      "stroke": "#000000",
+      "strokeWidth": 2,
+      "outlineWidth": 2,
+      "outlineColor": "#ffffff",
+      "outlineOpacity": 1,
+     },
+     "symbol": {
+      "fill": "#000000",
+      "outlineWidth": 2,
+      "outlineColor": "#ffffff",
+      "outlineOpacity": 1,
+     },
     },
     "tooltip": {
-        "wrapper": {},
-        "container": {
-            "background": theme.palette.background.default,
-            "color": "theme.palette.text.primary",
-            "fontSize": 12
-        },
-        "basic": {},
-        "chip": {},
-        "table": {},
-        "tableCell": {},
-        "tableCellValue": {}
-    }
-}}
+     "wrapper": {},
+     "container": {
+      "background": theme.palette.background.default,
+      "color": "theme.palette.text.primary",
+      "fontSize": 12,
+     },
+     "basic": {},
+     "chip": {},
+     "table": {},
+     "tableCell": {},
+     "tableCellValue": {},
+    },
+   }}
    data={data}
    keys={["gas", "petrol", "oil"]}
    indexBy="country"
@@ -148,7 +143,6 @@ const Bar = ({isDashboard = false}) => {
      spacing: 10,
     },
    ]}
-
    borderColor={{
     from: "color",
     modifiers: [["darker", 1.6]],
@@ -205,15 +199,16 @@ const Bar = ({isDashboard = false}) => {
    ]}
    role="application"
    ariaLabel="Nivo bar chart demo"
-   barAriaLabel={(e) => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}
+   barAriaLabel={(e) =>
+    e.id + ": " + e.formattedValue + " in country: " + e.indexValue
+   }
   />
  )
 
  return (
-    <Box style={{ height: isDashboard ? "300px" : "75vh"} }>
-
+  <Box style={{ height: isDashboard ? "300px" : "75vh" }}>
    <MyResponsiveBar />
-</Box>
+  </Box>
  )
 }
 

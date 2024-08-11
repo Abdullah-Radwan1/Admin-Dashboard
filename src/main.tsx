@@ -1,6 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
+import {
+ createBrowserRouter,
+ createRoutesFromElements,
+ Route,
+ RouterProvider,
+} from "react-router-dom"
 import App from "./App"
 import "./index.css"
 import Dashboard from "./pages/Dashboard/Dashboard"
@@ -31,18 +36,18 @@ const router = createBrowserRouter(
    <Route path="/pie" element={<PieChart />} />
    <Route path="/line" element={<LineChart />} />
    <Route path="/geography" element={<Geography />} />
-   <Route path="*" element={<NotFound/>} />
+   <Route path="*" element={<NotFound />} />
   </Route>,
  ),
 )
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById("root")
 
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>,
-  );
+ ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+   <RouterProvider router={router} />
+  </React.StrictMode>,
+ )
 } else {
-  console.error("Failed to find the root element");
+ console.error("Failed to find the root element")
 }
